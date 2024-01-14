@@ -1,0 +1,32 @@
+{% extends 'medsite/base.html' %}
+{% load mytags %}
+{% load static %}
+
+{% block content %}
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top" src="{% media_path object.image %}" alt="Изображение недоступно"
+                             width="304" height="228">
+                        <div class="card-body">
+                            <p class="card-text">{{ object.title }}.</p>
+                            <p class="card-text">{{ object.area }}.</p>
+                            <p class="card-text">{{ object.description }}.</p>
+                            <p class="card-text">{{ object.price }}.</p>
+
+
+                        </div>
+                    </div>
+                    <a href="{% url 'medsite:mri_list' %}" class="btn btn-primary"><< Назад</a>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'medsite:mri_order' object.id %}" role="button">Записаться</a>
+                    {% endif %}
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

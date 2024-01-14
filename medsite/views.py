@@ -48,6 +48,21 @@ class MRIOrderCreateView(LoginRequiredMixin, generic.CreateView):
         return super().form_valid(form)
 
 
+class MRIOrderDetailView(LoginRequiredMixin, generic.DetailView):
+    model = MRIOrder
+
+
+class MRIOrderUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = MRIOrder
+    form_class = MRIOrderForm
+    success_url = reverse_lazy('medsite:index')
+
+
+class MRIOrderDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = MRIOrder
+    success_url = reverse_lazy('medsite:index')
+
+
 class CTOrderCreateView(LoginRequiredMixin, generic.CreateView):
     model = CTOrder
     form_class = CTOrderForm
@@ -59,6 +74,21 @@ class CTOrderCreateView(LoginRequiredMixin, generic.CreateView):
         self.object.save()
 
         return super().form_valid(form)
+
+
+class CTOrderDetailView(LoginRequiredMixin, generic.DetailView):
+    model = CTOrder
+
+
+class CTOrderUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = CTOrder
+    form_class = CTOrderForm
+    success_url = reverse_lazy('medsite:index')
+
+
+class CTOrderDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = CTOrder
+    success_url = reverse_lazy('medsite:index')
 
 
 class PETCTOrderCreateView(LoginRequiredMixin, generic.CreateView):
@@ -74,6 +104,21 @@ class PETCTOrderCreateView(LoginRequiredMixin, generic.CreateView):
         return super().form_valid(form)
 
 
+class PETCTOrderDetailView(LoginRequiredMixin, generic.DetailView):
+    model = PETCTOrder
+
+
+class PETCTOrderUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = PETCTOrder
+    form_class = PETCTOrderForm
+    success_url = reverse_lazy('medsite:index')
+
+
+class PETCTOrderDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = PETCTOrder
+    success_url = reverse_lazy('medsite:index')
+
+
 class USOrderCreateView(LoginRequiredMixin, generic.CreateView):
     model = USOrder
     form_class = USOrderForm
@@ -85,3 +130,18 @@ class USOrderCreateView(LoginRequiredMixin, generic.CreateView):
         self.object.save()
 
         return super().form_valid(form)
+
+
+class USOrderDetailView(LoginRequiredMixin, generic.DetailView):
+    model = USOrder
+
+
+class USOrderUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = USOrder
+    form_class = USOrderForm
+    success_url = reverse_lazy('medsite:index')
+
+
+class USOrderDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = USOrder
+    success_url = reverse_lazy('medsite:index')

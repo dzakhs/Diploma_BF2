@@ -1,4 +1,4 @@
-from django.forms import forms
+from django import forms
 
 from medsite.models.CT import CTOrder
 from medsite.models.MRI import MRIOrder

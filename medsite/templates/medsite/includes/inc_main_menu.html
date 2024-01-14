@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="{% url 'catalog:index' %}">Menu</a>
+      <a class="navbar-brand" href="{% url 'medsite:index' %}">Главная</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -7,14 +7,9 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <li class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'catalog:product' %}">Product<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="">Контакты<span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'catalog:contacts' %}">Contacts<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-              <a class="nav-link" href="{% url 'catalog:blog_list' %}">Blog<span class="sr-only">(current)</span></a>
-          </li>
+
           {% if user.is_authenticated %}
           <li class="nav-item active">
               <a class="nav-link" href="{% url 'users:logout' %}">Выход<span class="sr-only">(current)</span></a>
