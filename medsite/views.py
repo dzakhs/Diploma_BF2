@@ -8,6 +8,7 @@ from medsite.models.CT import CTStudy, CTOrder
 from medsite.models.MRI import MRIStudy, MRIOrder
 from medsite.models.PET_CT import PETCTStudy, PETCTOrder
 from medsite.models.UltraSound import USStudy, USOrder
+from medsite.models.contacts import Contacts
 
 
 class IndexListView(generic.ListView):
@@ -145,3 +146,27 @@ class USOrderUpdateView(LoginRequiredMixin, generic.UpdateView):
 class USOrderDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = USOrder
     success_url = reverse_lazy('medsite:index')
+
+
+class UserOrdersView(generic.View):
+    login_url = 'users:login'
+
+    def get(self, request):
+        mri_orders = MRIOrder.objects.filter(user=self.request.user)
+        ct_orders = CTOrder.objects.filter(user=self.request.user)
+        petct_orders = PETCTOrder.objects.filter(user=self.request.user)
+        us_orders = USOrder.objects.filter(user=self.request.user)
+
+        context = {
+            'mri': mri_orders,
+            'ct': ct_orders,
+            'petct': petct_orders,
+            'us': us_orders
+        }
+
+        return render(request, 'medsite/user_orders.html', context)
+
+
+class ContactsListView(generic.ListView):
+    model = Contacts
+    template_name = 'medsite/contacts.html'

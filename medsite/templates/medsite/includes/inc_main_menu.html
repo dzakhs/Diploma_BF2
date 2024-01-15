@@ -7,7 +7,7 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <li class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="">Контакты<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{% url 'medsite:contacts' %}">Контакты<span class="sr-only">(current)</span></a>
           </li>
 
           {% if user.is_authenticated %}
@@ -16,6 +16,9 @@
           </li>
           <li class="nav-item active">
               <a class="nav-link" href="{% url 'users:profile' %}">Редактировать профиль<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+              <a class="nav-link" href="{% url 'medsite:user_orders' %}">Личный кабинет<span class="sr-only">(current)</span></a>
           </li>
           {% else %}
           <li class="nav-item active">

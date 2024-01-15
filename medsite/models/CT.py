@@ -14,7 +14,7 @@ class CTStudy(models.Model):
     contrast_enhancement = models.BooleanField(default=False, verbose_name='контрастное усиление')
 
     def __str__(self):
-        return f'{self.title} {self.area} {self.contrast_enhancement}'
+        return f'{self.title} {self.area}'
 
     class Meta:
         verbose_name = 'КТ-исследование'
@@ -25,11 +25,11 @@ class CTOrder(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='пациент')
     study = models.ForeignKey(CTStudy, on_delete=models.CASCADE, verbose_name='исследование')
     date = models.DateTimeField(verbose_name='дата и время')
-    duration = models.DurationField(verbose_name='продолжительность')
+    duration = models.DurationField(default=60.00, verbose_name='продолжительность')
 
     def __str__(self):
         return f'{self.user}, {self.study}, {self.date}, {self.duration}'
 
     class Meta:
-        verbose_name = 'запись на исследование'
-        verbose_name_plural = "записи на исследования"
+        verbose_name = 'запись на исследование КТ'
+        verbose_name_plural = "записи на исследования КТ"

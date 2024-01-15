@@ -7,7 +7,7 @@ from medsite.views import IndexListView, MRIStudyListView, CTStudyListView, USSt
     MRIOrderCreateView, CTOrderCreateView, USOrderCreateView, PETCTOrderCreateView, USOrderDetailView, \
     PETCTOrderDetailView, CTOrderDetailView, MRIOrderDetailView, USOrderUpdateView, PETCTOrderUpdateView, \
     CTOrderUpdateView, MRIOrderUpdateView, USOrderDeleteView, PETCTOrderDeleteView, CTOrderDeleteView, \
-    MRIOrderDeleteView
+    MRIOrderDeleteView, UserOrdersView, ContactsListView
 
 app_name = MedsiteConfig.name
 
@@ -32,5 +32,7 @@ urlpatterns = [
     path('us_order/delete/<int:pk>/', USOrderDeleteView.as_view(),name='us_order_delete'),
     path('petct_order/delete/<int:pk>/', PETCTOrderDeleteView.as_view(),name='petct_order_delete'),
     path('ct_order/delete/<int:pk>/', CTOrderDeleteView.as_view(),name='ct_order_delete'),
-    path('mri_order/delete/<int:pk>/', MRIOrderDeleteView.as_view(),name='mri_order_delete')
+    path('mri_order/delete/<int:pk>/', MRIOrderDeleteView.as_view(),name='mri_order_delete'),
+    path('user_orders/', UserOrdersView.as_view(),name='user_orders'),
+    path('contacts/', ContactsListView.as_view(), name='contacts')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

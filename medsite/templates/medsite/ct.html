@@ -9,16 +9,22 @@
                 <div class="row">
                 {% for object in object_list %}
                     <div class="col-md-4">
-                        <div class="card mb-4 box-shadow" >
+                        <div class="card mb-6 box-shadow" >
                              <img class="card-img-top" src="{% media_path object.image %}" alt="Изображение недоступно">
                             <div class="card-body">
-                            <p class="card-text">{{ object.title }} {{object.area}}.</p>
-                                <div class="d-flex justify-content-between align-items-center">
+                            <p class="card-text">Наименование: {{ object.title }}.</p>
+                            <p class="card-text">Область обследования: {{ object.area }}.</p>
+                            <p class="card-text">Описание: {{ object.description }}.</p>
+                            <p class="card-text">Цена: {{ object.price }}.</p>
+
+                                   {% if user.is_authenticated %}
                                     <div class="btn-group">
-                                        <p><a class="btn btn-secondary" href="" role="button">Подробнее &raquo;</a></p>
-                                        <p><a class="btn btn-secondary" href="" role="button">Изменить &raquo;</a></p>
-                                        <p><a class="btn btn-secondary" href="" role="button">Удалить &raquo;</a></p>
+                                        <p><a class="btn btn-secondary" href="{% url 'medsite:ct_order' %}" role="button">Записаться &raquo;</a></p>
+                                        <p><a class="btn btn-secondary" href="{% url 'medsite:index' %}" role="button">Назад &raquo;</a></p>
+                                    {% else %}
+                                         <p><a class="btn btn-secondary" href="{% url 'medsite:index' %}" role="button">Назад &raquo;</a></p>
                                     </div>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>

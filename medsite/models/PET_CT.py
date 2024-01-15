@@ -21,7 +21,7 @@ class PETCTStudy(models.Model):
     pet_tracer = models.CharField(max_length=55, choices=PET_TRACER_CHOISES, verbose_name='радиофармпрепарат')
 
     def __str__(self):
-        return f'{self.title}, {self.area}, {self.contrast_enhancement}, {self.pet_tracer}'
+        return f'{self.title}, {self.area}, {self.pet_tracer}'
 
     class Meta:
         verbose_name = 'ПЭТ/КТ-исследование'
@@ -32,11 +32,11 @@ class PETCTOrder(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='пациент')
     study = models.ForeignKey(PETCTStudy, on_delete=models.CASCADE, verbose_name='исследование')
     date = models.DateTimeField(verbose_name='дата и время')
-    duration = models.DurationField(verbose_name='продолжительность')
+    duration = models.DurationField(default=60.00, verbose_name='продолжительность')
 
     def __str__(self):
         return f'{self.user}, {self.study}, {self.date}, {self.duration}'
 
     class Meta:
-        verbose_name = 'запись на исследование'
-        verbose_name_plural = "записи на исследования"
+        verbose_name = 'запись на исследование ПЭТ-КТ'
+        verbose_name_plural = "записи на исследования ПЭТ-КТ"

@@ -1,0 +1,25 @@
+{% extends 'medsite/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <hr class="featurette-divider">
+    <h1 class="featurette-heading fw-normal lh-1">Мои обследования </h1>
+    <div class="row featurette">
+      <div class="col-md-11 m-3">
+        <h1 class="featurette-heading fw-normal lh-1">МРТ: {{mri_orders}}  </h1>
+        <h1 class="featurette-heading fw-normal lh-1">КТ: {{ct_orders}}  </h1>
+        <h1 class="featurette-heading fw-normal lh-1">ПЭТ-КТ: {{petct_orders}}  </h1>
+        <h1 class="featurette-heading fw-normal lh-1">УЗИ: {{us_orders}}  </h1>
+      </div>
+
+
+
+
+    </div>
+
+    <hr class="featurette-divider">
+
+
+
+{% endblock %}

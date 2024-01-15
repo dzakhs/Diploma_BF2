@@ -19,7 +19,7 @@ class RegisterView(CreateView):
     model = User
     form_class = UserRegisterForm
     template_name = 'users/register.html'
-    # success_url = reverse_lazy('users:verify_email_sent')
+    success_url = reverse_lazy('users:verify_email_sent')
 
     def form_valid(self, form):
         new_user = form.save()
@@ -33,7 +33,7 @@ class RegisterView(CreateView):
             from_email=settings.EMAIL_HOST_USER,
             recipient_list=[new_user.email],
         )
-        # return super().form_valid(form)
+
         return redirect('users:verify_email_sent')
 
 
@@ -73,8 +73,7 @@ class VerifyEmailSentView(View):
 
 class EmailConfirmedView(TemplateView):
     template_name = 'users/email_confirmed.html'
-    # def get(self, request):
-    #    return render(request, 'users/email_confirmed.html')
+
 
 
 class UserPasswordResetView(PasswordResetView):

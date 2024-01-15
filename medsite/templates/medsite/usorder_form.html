@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'medsite/base.html' %}
+{% block content %}
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="{% if object %} Изменить {% else %} Записаться {% endif %}">
+    <p><a class="btn btn-secondary" href="{% url 'medsite:us_list' %}" role="button">Назад &raquo;</a></p>
+</form>
+{% endblock %}

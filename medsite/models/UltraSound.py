@@ -13,7 +13,7 @@ class USStudy(models.Model):
     doppler = models.BooleanField(default=False, verbose_name='допплерография')
 
     def __str__(self):
-        return f'{self.title} {self.area} {self.contrast_enhancement}'
+        return f'{self.title} {self.area} '
 
     class Meta:
         verbose_name = 'УЗ-исследеование'
@@ -24,11 +24,11 @@ class USOrder(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='пациент')
     study = models.ForeignKey(USStudy, on_delete=models.CASCADE, verbose_name='исследование')
     date = models.DateTimeField(verbose_name='дата и время')
-    duration = models.DurationField(verbose_name='продолжительность')
+    duration = models.DurationField(default=30.00, verbose_name='продолжительность')
 
     def __str__(self):
-        return f'{self.user}, {self.study}, {self.date}, {self.duration}'
+        return f'{self.user}, {self.study}, {self.date}'
 
     class Meta:
-        verbose_name = 'запись на исследование'
-        verbose_name_plural = "записи на исследования"
+        verbose_name = 'запись на исследование УЗИ'
+        verbose_name_plural = "записи на исследования УЗИ"
